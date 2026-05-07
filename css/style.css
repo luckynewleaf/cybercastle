@@ -193,15 +193,6 @@ body {
   cursor: pointer;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .logo {
-    height: 85px;
-  }
-  .slogan {
-    font-size: 1.25rem;
-  }
-}
 /* ====================== BECOME A KNIGHT ====================== */
 .knight-page {
   min-height: 100vh;
@@ -306,10 +297,10 @@ body {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
 }
 
 .home-button button:focus,
@@ -335,14 +326,6 @@ body {
 .home-button button:hover img,
 .home-button img:hover {
   transform: scale(1.05);
-}
-
-.knight-page {
-  position: relative;
-}
-
-.knight-page {
-  position: relative;
 }
 
 /* ====================== FONT TOGGLE ====================== */
@@ -518,8 +501,10 @@ body.times-new-roman .back-button body.times-new-roman .toc-list body.times-new-
 .content-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: left center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left center;
+     object-position: left center;
 }
 
 .back-button {
@@ -544,8 +529,6 @@ body.times-new-roman .back-button body.times-new-roman .toc-list body.times-new-
 @media (max-width: 1050px) {
   body {
     width: 1050px;
-    transform: scale(calc(min(1, 100vw / 1050)));
+    transform: scale(0.0952380952vw);
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
