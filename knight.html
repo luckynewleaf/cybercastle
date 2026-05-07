@@ -20,29 +20,42 @@
         </div>
     </div>
 <div class="home-button">
-    <img src="assets/home.png" alt="Home" onclick="window.location.href='index.html'">
+    <button type="button" onclick="window.location.href='index.html'">
+        <img src="assets/home.png" alt="Home">
+    </button>
 </div>
-    <button class="font-toggle" onclick="toggleFont()">Use easy-to-read font</button>
+    <button type="button" class="font-toggle" aria-pressed="false" onclick="toggleFont()">Use easy-to-read font</button>
 
     <script>
         // ==================== FONT TOGGLE ====================
         function applyFontPreference() {
             const preference = localStorage.getItem('fontPreference');
+            const button = document.querySelector('.font-toggle');
             if (preference === 'times-new-roman') {
                 document.body.classList.add('times-new-roman');
-                const btn = document.querySelector('.font-toggle');
-                if (btn) btn.textContent = 'Use fantasy font';
+                if (button) {
+                    button.textContent = 'Use fantasy font';
+                    button.setAttribute('aria-pressed', 'true');
+                }
+            } else if (button) {
+                button.setAttribute('aria-pressed', 'false');
             }
         }
 
         function toggleFont() {
-            document.body.classList.toggle('times-new-roman');
             const button = document.querySelector('.font-toggle');
+            document.body.classList.toggle('times-new-roman');
             if (document.body.classList.contains('times-new-roman')) {
-                button.textContent = 'Use fantasy font';
+                if (button) {
+                    button.textContent = 'Use fantasy font';
+                    button.setAttribute('aria-pressed', 'true');
+                }
                 localStorage.setItem('fontPreference', 'times-new-roman');
             } else {
-                button.textContent = 'Use easy-to-read font';
+                if (button) {
+                    button.textContent = 'Use easy-to-read font';
+                    button.setAttribute('aria-pressed', 'false');
+                }
                 localStorage.setItem('fontPreference', 'cardinal');
             }
         }
@@ -64,7 +77,7 @@
         };
 
         const scenes = {
-            start: { image: "assets/game1.png", text: "The ancient Cyber Castle is under siege by shadowy forces of hackers and phishing dragons. Chaos erupts all over the kingdom!<br><br>The King has sent forth a desperate call for brave knights to defend the realm.<br><br>Do you heed the call and join the fight?<br><br>Or do you watch as the Cyber Castle crumbles?", buttons: [{ text: "Accept", next: "accept" }, { text: "Decline", next: "decline" }] },
+            start: { image: "assets/game1.png", text: "The ancient Cyber Castle is under siege by shadowy forces of hackers and phishing dragons. Chaos erupts all over the kingdom!<br><br>The King has sent forth a desperate call for brave knights to defend the realm.<br><br>Do you heed the call and join the fight? Or do you watch as the Cyber Castle crumbles?", buttons: [{ text: "Accept", next: "accept" }, { text: "Decline", next: "decline" }] },
             decline: { image: "assets/game2.png", text: "A heavy sigh echoes through the halls.<br><br>Without your aid, the castle walls crumble under the dark tide. You remain exposed, vulnerable to the phishing beasts.", buttons: [{ text: "Return home", next: "home" }] },
             accept: { image: "assets/game3.png", text: "The King’s eyes light up with hope.<br><br>“A true knight has answered!” He bids that you await a formal summons delivered by royal owl.<br><br>The next dawn, a majestic owl perches on a nearby fence, a sealed scroll tied to its leg.<br><br>What do you do?", buttons: [{ text: "Open the letter", next: "open" }, { text: "Inspect it", next: "inspect" }] },
             open: { image: "assets/game4.png", text: "Disaster!<br><br>The scroll was a cunning trap from the Dark Web Sorcerer!<br><br>The King is disappointed in your haste.", buttons: [{ text: "Try again", next: "start" }]},

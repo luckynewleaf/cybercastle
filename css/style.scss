@@ -25,7 +25,12 @@ body {
   font-family: "Cardinal", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: #0b1a1f;
   color: #f0e6d2;
+  min-height: 100%;
+  line-height: 1.55;
   overflow-x: hidden;
+  width: 100vw;
+  transform-origin: top center;
+  transform: scale(1);
 }
 
 /* HERO */
@@ -55,21 +60,23 @@ body {
 .content {
   position: relative;
   z-index: 2;
-  max-width: 720px;
+  width: 720px;
   padding: 2rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .logo {
   height: 110px;
   width: auto;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
   filter: drop-shadow(0 0 25px rgba(212, 175, 119, 0.6));
 }
 
 .slogan {
   font-family: "Cardinal", Georgia, serif;
   font-weight: bold; /* Uses Cardinal-Alternate */
-  font-size: 1.45rem;
+  font-size: 18px;
   color: #f0e6d2;
   margin-bottom: 2rem;
   letter-spacing: 4px;
@@ -88,7 +95,7 @@ body {
   font-family: "Cardinal", Georgia, serif;
   background: url("../assets/buttons.png") center/cover no-repeat;
   padding: 14px 38px;
-  font-size: 1.05rem;
+  font-size: 16px;
   font-weight: bold; /* Uses Cardinal-Alternate */
   color: #3c2f1e;
   border: none;
@@ -100,6 +107,12 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   position: relative;
   overflow: hidden;
+  min-width: 170px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: normal;
 }
 
 .btn-primary:hover,
@@ -161,7 +174,7 @@ body {
 .modal-text {
   font-family: "Cardinal", Georgia, serif;
   font-weight: bold; /* Uses Cardinal-Alternate */
-  font-size: 1.4rem;
+  font-size: 18px;
   line-height: 1.6;
   margin-bottom: 2.5rem;
 }
@@ -172,7 +185,7 @@ body {
   width: 100%;
   padding: 1.2rem;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 16px;
   background: #d4af77;
   color: #0b1a1f;
   border: none;
@@ -200,15 +213,16 @@ body {
 }
 
 .parchment-container {
-  width: 860px !important; 
-  height: 780px !important; 
-  background: url("../assets/story_bg.png") center/contain no-repeat !important;
-  background-color: #0b1a1f !important;
+  width: 860px;
+  min-height: 740px;
+  background: url("../assets/story_bg.png") center top/contain no-repeat;
+  background-color: #0b1a1f;
   border: none;
   box-shadow: none;
   position: relative;
   overflow: hidden;
-  flex-shrink: 0; 
+  flex-shrink: 0;
+  padding: 110px 28px 50px;
 }
 
 /* Game photos */
@@ -239,7 +253,7 @@ body {
   transform: translateX(-50%);
   width: 450px;
   color: #2c211b;
-  font-size: 1.2rem;
+  font-size: 18px;
   line-height: 1.35;
   text-align: center;
 }
@@ -259,8 +273,8 @@ body {
 .story-buttons button {
   font-family: "Cardinal", Georgia, serif;
   background: url("../assets/buttons.png") center/cover no-repeat;
-  padding: 10px 32px; /* smaller */
-  font-size: 0.95rem; /* smaller text */
+  padding: 10px 32px;
+  font-size: 14px;
   font-weight: bold; /* Uses Cardinal-Alternate */
   color: #3c2f1e;
   border: none;
@@ -278,18 +292,47 @@ body {
   position: absolute;
   top: 15px;
   left: 5px;
-  z-index: 30; 
-  pointer-events: none; 
+  z-index: 30;
+  background: transparent !important;
 }
+
+.home-button button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}
+
+.home-button button:focus,
+.home-button button:active {
+  outline: none;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.home-button button::-moz-focus-inner {
+  border: 0;
+}
+
 .home-button img {
   width: 220px;
   height: auto;
-  display: block; /* virker det? */
-  cursor: pointer;
-  pointer-events: auto; 
+  display: block;
+  background: transparent;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
   transition: all 0.3s ease;
 }
+
+.home-button button:hover img,
 .home-button img:hover {
   transform: scale(1.05);
 }
@@ -310,7 +353,7 @@ body {
   border: 2px solid #d4af77;
   color: #d4af77;
   padding: 8px 14px;
-  font-size: 0.85rem;
+  font-size: 12px;
   cursor: pointer;
   border-radius: 6px;
   font-family: "Times New Roman", serif;
@@ -363,8 +406,8 @@ body.times-new-roman .modal-content{
 
 .book-container {
   width: 980px;
-  max-width: 95vw;
-  height: 630px;
+  min-height: 630px;
+  height: auto;
   background: url("../assets/book.png") center/contain no-repeat;
   position: relative;
   padding: 90px 60px;
@@ -377,8 +420,8 @@ body.times-new-roman .modal-content{
 
 .main-question {
   font-family: "Cardinal", Georgia, serif;
-  font-weight: bold; 
-  font-size: 1.5rem;
+  font-weight: bold;
+  font-size: 20px;
   color: #3c2f1e;
   text-align: left;
   margin-bottom: 2.5rem;
@@ -397,7 +440,7 @@ body.times-new-roman .modal-content{
 }
 
 .column p {
-  font-size: 1.05rem;
+  font-size: 16px;
   line-height: 1.75;
   margin-bottom: 1.5rem;
 }
@@ -425,7 +468,7 @@ body.times-new-roman .modal-content{
 .toc-header {
   font-family: "Cardinal", Georgia, serif;
   font-weight: bold; /* Cardinal-Alternate */
-  font-size: 1.5rem;
+  font-size: 20px;
   color: #3c2f1e;
   margin-bottom: 1.5rem;
   text-align: left;
@@ -439,10 +482,10 @@ body.times-new-roman .modal-content{
 
 .toc-item {
   font-family: "Cardinal", Georgia, serif;
-  font-size: 1.05rem;
+  font-size: 16px;
   color: #3c2f1e;
   background: rgba(212, 175, 119, 0.15);
-  width : 85%;
+  width: 85%;
   border: 2px solid #8b5a2b;
   padding: 12px 20px;
   border-radius: 6px;
@@ -490,7 +533,7 @@ body.times-new-roman .modal-content{
   border: 2px solid #8b5a2b;
   color: #3c2f1e;
   padding: 10px 14px;
-  font-size: 0.95rem;
+  font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -501,4 +544,11 @@ body.times-new-roman .modal-content{
   background: rgba(212, 175, 119, 0.35);
   border-color: #d4af77;
   transform: translateX(-3px);
+}
+
+@media (max-width: 1050px) {
+  body {
+    width: 1050px;
+    transform: scale(calc(min(1, 100vw / 1050)));
+  }
 }

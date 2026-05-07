@@ -42,27 +42,38 @@
     </div>
 
     <!-- Font Toggle Button -->
-    <button class="font-toggle" onclick="toggleFont()">Use easy-to-read font</button>
+    <button type="button" class="font-toggle" aria-pressed="false" onclick="toggleFont()">Use easy-to-read font</button>
 
     <script>
         // ==================== FONT TOGGLE ====================
         function applyFontPreference() {
             const preference = localStorage.getItem('fontPreference');
+            const button = document.querySelector('.font-toggle');
             if (preference === 'times-new-roman') {
                 document.body.classList.add('times-new-roman');
-                const btn = document.querySelector('.font-toggle');
-                if (btn) btn.textContent = 'Use fantasy font';
+                if (button) {
+                    button.textContent = 'Use fantasy font';
+                    button.setAttribute('aria-pressed', 'true');
+                }
+            } else if (button) {
+                button.setAttribute('aria-pressed', 'false');
             }
         }
 
         function toggleFont() {
-            document.body.classList.toggle('times-new-roman');
             const button = document.querySelector('.font-toggle');
+            document.body.classList.toggle('times-new-roman');
             if (document.body.classList.contains('times-new-roman')) {
-                button.textContent = 'Use fantasy font';
+                if (button) {
+                    button.textContent = 'Use fantasy font';
+                    button.setAttribute('aria-pressed', 'true');
+                }
                 localStorage.setItem('fontPreference', 'times-new-roman');
             } else {
-                button.textContent = 'Use easy-to-read font';
+                if (button) {
+                    button.textContent = 'Use easy-to-read font';
+                    button.setAttribute('aria-pressed', 'false');
+                }
                 localStorage.setItem('fontPreference', 'cardinal');
             }
         }
