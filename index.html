@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cyber Castle</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="hero">
+        <video class="background-video" autoplay loop muted playsinline>
+            <source src="assets/castle_background.mp4" type="video/mp4">
+        </video>
+
+        <div class="content">
+            <!-- Logo -->
+            <img src="assets/logo.png" alt="The Cyber Castle logo" class="logo">
+
+            <!-- Slogan or something idk lol -->
+            <p class="slogan">Protect yourself. Like a knight!</p>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <button onclick="window.location.href='knight.html'" class="btn-primary">
+                 Become a knight
+                </button>
+                <button onclick="window.location.href='learn_more.html'" class="btn-secondary">
+                 Learn more
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario Modal -->
+    <div id="scenario-modal" class="modal hidden">
+        <div class="modal-content">
+            <button onclick="closeModal()" class="close-btn">✕</button>
+            <div id="modal-text" class="modal-text"></div>
+            <div id="modal-choices" class="choices"></div>
+        </div>
+    </div>
+
+    <!-- Font Toggle Button -->
+    <button class="font-toggle" onclick="toggleFont()">Use easy-to-read font</button>
+
+    <script>
+        // ==================== FONT TOGGLE ====================
+        function applyFontPreference() {
+            const preference = localStorage.getItem('fontPreference');
+            if (preference === 'times-new-roman') {
+                document.body.classList.add('times-new-roman');
+                const btn = document.querySelector('.font-toggle');
+                if (btn) btn.textContent = 'Use fantasy font';
+            }
+        }
+
+        function toggleFont() {
+            document.body.classList.toggle('times-new-roman');
+            const button = document.querySelector('.font-toggle');
+            if (document.body.classList.contains('times-new-roman')) {
+                button.textContent = 'Use fantasy font';
+                localStorage.setItem('fontPreference', 'times-new-roman');
+            } else {
+                button.textContent = 'Use easy-to-read font';
+                localStorage.setItem('fontPreference', 'cardinal');
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', applyFontPreference);
+        } else {
+            applyFontPreference();
+        }
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
