@@ -363,9 +363,15 @@ body.times-new-roman .story-buttons button,
 body.times-new-roman .choices button,
 body.times-new-roman .main-question,
 body.times-new-roman .column p,
-body.times-new-roman .book-content body.times-new-roman .toc-header,
+body.times-new-roman .toc-header,
 body.times-new-roman .toc-item,
-body.times-new-roman .back-button body.times-new-roman .toc-list body.times-new-roman .content-right body.times-new-roman .content-photo body.times-new-roman .home-button img body.times-new-roman .book-content body.times-new-roman .modal-content {
+body.times-new-roman .back-button,
+body.times-new-roman .toc-list,
+body.times-new-roman .content-right,
+body.times-new-roman .content-photo,
+body.times-new-roman .home-button img,
+body.times-new-roman .book-content,
+body.times-new-roman .modal-content {
   font-family: "Times New Roman", Georgia, serif;
   font-weight: normal;
 }
